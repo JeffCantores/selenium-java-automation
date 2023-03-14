@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeDriverService;
 
@@ -14,7 +15,9 @@ public class BrowserFactory {
 		switch (browserName) {
 		case "Chrome":
 			System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");
+			driver = new ChromeDriver(options);
 			break;
 		case "Firefox":
 			System.out.println("Opened Firefox browser");
